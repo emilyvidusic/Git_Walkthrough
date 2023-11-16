@@ -1,0 +1,108 @@
+---
+title: "Git_Walkthrough"
+author: "Emily Vidusic"
+date: "9/13/2023"
+output: html_document
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#libraries needed
+library(usethis) #nice interactions with Git/GitHub
+library(gitcreds) #for functions that help set up PAT (personal access token)
+
+#optional libraries
+#library(credentials)
+#library(gert)
+#library(gh)
+```
+
+These packages are important to use in order for RStudio and GitHub to talk.
+
+Note: Git and GitHub are two separate things. GitHub is like the user interface while Git is the "operating system" itself; similar to R and RStudio.
+
+------------------------------------------------------------
+
+### Installing and Configuring Git
+
+You can use the terminal on your Mac, or the terminal tab below next to the console to type:
+
+which git
+
+Note: You should see your code reply with a pathway. Most versions of MacOS will already have git installed. You can also verify if git is installed and what version it is with these two codes used in the terminal:
+
+git config 
+
+OR
+
+git version
+
+Now you will need to configure Git to your GitHub account. If you do not have a GitHub account, go to https:://github.com/ and sign up to create an account. Once finished, configure git using this code in the console (not terminal) below with your own info. 
+
+use_git_config(user.name = "Emily Vidusic", user.email = "emilyvidusic@gmail.com")
+
+**make sure to enter your name and your email associated with the GitHub account you created**
+
+-------------------------------------------------------------
+
+### Personal Access Token (PAT)
+
+A personal access token (PAT) is necessary for both Github and RStudio to talk to one another. 
+
+1. Run create_github_token() function from *usethis* library in the console. This will take you to the GitHub website where you can create a token. Store this token somewhere safe and do not lose it! You will need it soon and possibly in the distant future.
+
+2. Run gitcreds_set() function from the *gitcreds* package in the console. If you are given options, choose the option to "Replace these credentials" and then paste your PAT that you created in Step 1. 
+
+3. In the next few steps where we will practice committing and pushing, it may still ask you for your github username and password. Use your PAT when it asks for your password.
+
+
+-----------------------------------------------------------------------------
+
+### Time to Create and Clone a Repository!
+
+1. Create a repository on the Github website (https:://github.com/). After you login, click on your profile (icon in top right corner). A drop-down will appear, and click on "Your repositories'.
+
+2. Click the "New" button. Make sure to name your repository and give it a clear description. You can choose to make your repository Public or Private. You can also choose to add a README file and a license. Once you are finished, click "Create Repository".
+
+3. Clone a repository by clicking the green "Code" button and copying the link. In RStudio, click on File -> New Project -> Version Control -> Git -> Paste the link you copied and put it in the desired location. Click "Create Project". This will open a new RStudio session. You should now see a Git tab (by default in the upper right corner), and there will be a .Rproj and .gitignore file there.
+
+**Cloning is a term used to connect the "cloud" repository to your computer, which we are making the connection to RStudio and opening a new project**
+
+
+------------------------------------------------------------------------------
+
+### Committing and Pushing Documents to your Repository
+
+Now that you have a project opened, those documents inherently live wherever you put them on your computer. To upload/update documents onto your repository, you need to 1) commit and 2) push them to GitHub.
+
+1. When GitHub is connected to your project, you will have a new "Git" tab in your Environment pane. Click on it.
+
+2. Check the boxes under "Staged" to select the ones you would like to to commit. Then click "Commit", and a new window will pop up showing the files that you are committing. It will give you info on those files if you click around.
+
+3. A smaller pane inside will say "Commit message". This is a place where you can write a message to help remind your future self of what updates/changes you made to said documents when pushing them to GitHub. Write a description in this pane, then click "Commit" to push the document(s) to your GitHub repository. A new Git Commit pane will pop up letting you know exactly what document(s) you committed.
+
+  - Example of a commit message: "added .gitignore and .Rproj files"
+
+Note: This new change that you've made is tracked. Check your history in the "Git" tab by clicking on the clock icon. However, these documents are *NOT* on GitHub yet. In order to get them onto GitHub, you will need to "push" them.
+
+4. There are two places you can push your documents. You can 1) click the "Push" icon in the upper right corner of the Commit window, or 2) click the green arrow pointing up in the "Git" tab. Remember that you can only push these documents after you have committed them. 
+
+If you refresh your GitHub repository page, you should now see those pushed documents with their Commit messages alongside them.
+
+
+------------------------------------------------------------
+
+### More Resources 
+
+Need to troubleshoot RStudio and Git connectivity issues? Want to learn better practices of RStudio and GitHub workflow? Check out:
+
+"Happy Git and GitHub for the useR" (https://happygitwithr.com/)
+
+Want to publish your work/html output onto a website? Learn how to initialize GitHub Pages at the end of this resources document:
+
+"GitHub and RStudio" (https://resources.github.com/github-and-rstudio/)
+
+
+
+
